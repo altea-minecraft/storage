@@ -57,6 +57,10 @@ func New(config ...Config) *Storage {
 	}
 }
 
+func NewWithDB(db *redis.Client) *Storage {
+	return &Storage{db: db}
+}
+
 // Get value by key
 func (s *Storage) Get(key string) ([]byte, error) {
 	if len(key) <= 0 {
